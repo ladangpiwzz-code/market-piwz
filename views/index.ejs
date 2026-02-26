@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>PIWZ MARKET</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<h1>PIWZ MARKET</h1>
+
+<div class="grid">
+<% products.forEach(p => { 
+let final = p.discount > 0 ? p.price - (p.price * p.discount / 100) : p.price
+let wa = "https://wa.me/6283878235306?text=bang saya mau order " + p.name + " harga Rp " + final
+%>
+
+<div class="card">
+<img src="/uploads/<%= p.image %>">
+<h2><%= p.name %></h2>
+
+<% if(p.discount > 0){ %>
+<p class="old">Rp <%= p.price %></p>
+<p class="new">Rp <%= final %> (Diskon <%= p.discount %>%)</p>
+<% } else { %>
+<p class="new">Rp <%= p.price %></p>
+<% } %>
+
+<a href="<%= wa %>" target="_blank">
+<button>ORDER WHATSAPP</button>
+</a>
+
+</div>
+
+<% }) %>
+</div>
+
+</body>
+</html>
