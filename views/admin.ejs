@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>ADMIN PANEL</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<h1>ADMIN PANEL</h1>
+
+<form action="/add" method="POST" enctype="multipart/form-data">
+<input name="name" placeholder="Nama Produk" required>
+<input name="price" placeholder="Harga" required>
+<input name="discount" placeholder="Diskon %" value="0">
+<input type="file" name="image" required>
+<button type="submit">Tambah Produk</button>
+</form>
+
+<hr>
+
+<% products.forEach(p => { %>
+<div class="admin-item">
+<img src="/uploads/<%= p.image %>" width="100">
+<b><%= p.name %></b>
+<form action="/delete/<%= p.id %>" method="POST">
+<button>Hapus</button>
+</form>
+</div>
+<% }) %>
+
+</body>
+</html>
